@@ -1,7 +1,8 @@
 const child_process = require('child_process')
+const iconv = require('iconv-lite')
 
 module.exports = {
-   printFileOperation (pdfFiles, printerName) {
+   printFiles (pdfFiles, printerName) {
       var createFile = "";
       createFile += '@echo off \n';
       createFile += 'cd \n';
