@@ -7,9 +7,9 @@
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
-Print PDF files in Windows OS by node.js.  (supports Node, Electron)
+Print PDF files in Windows OS by node.js.  (supports Node, Electron. Only node.js without c++)
 
-(Only node.js without c++).
+If you use it in electron, check out: https://github.com/sindresorhus/electron-util#fixpathforasarunpackpath
 
 ## Usage
 ```
