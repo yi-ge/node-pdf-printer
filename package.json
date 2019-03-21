@@ -1,6 +1,6 @@
 {
   "name": "node-pdf-printer",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Print PDF files in Windows OS by node.js.",
   "main": "src/index.js",
   "scripts": {

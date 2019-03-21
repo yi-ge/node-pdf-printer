@@ -18,7 +18,7 @@ module.exports = {
       createFile += 'exit /b 0 \n'
       createFile += 'pause>nul \n'
 
-      const batFileUrl = path.join(__dirname, 'printTmp.bat')
+      const batFileUrl = path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), 'printTmp.bat')
       fs.writeFile(batFileUrl, createFile, function (err) {
         if (err) {
           reject(err)

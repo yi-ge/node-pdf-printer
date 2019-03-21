@@ -1,5 +1,13 @@
 # Node.js PDF Printer
-Print PDF files in Windows OS by node.js.
+
+[![npm version](https://img.shields.io/npm/v/node-pdf-printer.svg?style=flat-square)](https://www.npmjs.org/package/node-pdf-printer)
+[![npm](https://img.shields.io/npm/dt/node-pdf-printer.svg?style=flat-square)](http://npm-stat.com/charts.html?package=node-pdf-printer)
+[![license](https://img.shields.io/github/license/yi-ge/node-pdf-printer.svg?style=flat-square)](https://github.com/yi-ge/node-pdf-printer/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/yi-ge/node-pdf-printer.svg?style=flat-square)](https://github.com/yi-ge/node-pdf-printer)
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
+Print PDF files in Windows OS by node.js.  (supports Node, Electron)
 
 (Only node.js without c++).
 
@@ -19,6 +27,12 @@ NodePdfPrinter.printFiles(array) // Printer files to the default Windows printer
 
 NodePdfPrinter.printFiles(array, printerName) // Printer files to the specific printer by the printer name.
 ```
+
+## Duplex printing
+
+> PDF-XChange Viewer cannot save a duplex-printing option as the default. To print in duplex mode, modify the settings of your Windows printer (in the Windows Control Panel or Settings app) to enable duplex printing, or create a duplicate copy of your Windows printer, set it to print in duplex by default, and specify that printer when running PDFtoPrinter.exe. Search the web if you don't know how to create a duplicate copy of your Windows printer or if you don't know how to specify duplex printing in your Windows printer properties.
+
+More: http://www.columbia.edu/~em36/pdftoprinter.html
 
 ## Reference
 
