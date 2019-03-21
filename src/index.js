@@ -6,8 +6,9 @@ const path = require('path')
 module.exports = {
   printFiles (pdfFiles, printerName) {
     return new Promise((resolve, reject) => {
+      const execPath = path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
-      createFile += 'cd \n'
+      createFile += 'cd ' + execPath + '\n'
 
       if (printerName) printerName = ' "' + printerName + '"'
 
@@ -18,7 +19,7 @@ module.exports = {
       createFile += 'exit /b 0 \n'
       createFile += 'pause>nul \n'
 
-      const batFileUrl = path.join(__dirname.replace('app.asar', 'app.asar.unpacked'), 'printTmp.bat')
+      const batFileUrl = path.join(execPath, 'printTmp.bat')
       fs.writeFile(batFileUrl, createFile, function (err) {
         if (err) {
           reject(err)
