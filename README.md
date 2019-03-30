@@ -17,7 +17,7 @@ npm i node-pdf-printer
 ```
 
 ```javascript
-const NodePdfPrinter = require('node-pdf-printer')
+import NodePdfPrinter from 'node-pdf-printer'
 
 NodePdfPrinter.listPrinter() // List all printer name.
 
