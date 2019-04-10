@@ -10,7 +10,11 @@ module.exports = {
       let createFile = '@echo off \n'
       createFile += 'cd ' + execPath + '\n'
 
-      if (printerName) printerName = ' "' + printerName + '"'
+      if (printerName) {
+        printerName = ' "' + printerName + '"'
+      } else {
+        printerName = ''
+      }
 
       for (var i = 0; i < pdfFiles.length; i++) {
         createFile += 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + '\n'
