@@ -17,7 +17,7 @@ npm i node-pdf-printer
 ```
 
 ```javascript
-import NodePdfPrinter from 'node-pdf-printer'
+import NodePdfPrinter from 'node-pdf-printer-multilang'
 import path from 'path'
 
 NodePdfPrinter.listPrinter('en-US') // Returns a promise with the array of printer names, this isn't a mandatory step
