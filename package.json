@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yi-ge/node-pdf-printer.git"
+    "url": "git+https://github.com/anuraagvaidya/node-pdf-printer.git"
   },
   "keywords": [
     "printer"
