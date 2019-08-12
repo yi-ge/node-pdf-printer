@@ -18,10 +18,11 @@ npm i node-pdf-printer
 
 ```javascript
 import NodePdfPrinter from 'node-pdf-printer'
+import path from 'path'
 
-NodePdfPrinter.listPrinter() // List all printer name.
+NodePdfPrinter.listPrinter('en-US') // List all printer name.
 
-const array = ['C:\\abc\\a.pdf', 'D:\\abd\\b.pdf']
+const array = ['C:\\abc\\a.pdf', path.resolve('./<your project folder>/some-pdf.pdf')]
 
 NodePdfPrinter.printFiles(array) // Printer files to the default Windows printer.
 
