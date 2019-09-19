@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-  printFiles (pdfFiles, printerName) {
+  printFiles(pdfFiles, printerName) {
     return new Promise((resolve, reject) => {
       const execPath = path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
@@ -39,16 +39,16 @@ module.exports = {
       })
     })
   },
-  listPrinter (language='en-US') {
+  listPrinter(language = 'en-US') {
     return new Promise((resolve, reject) => {
-      let langs={
-        'zh-CN':{
-          encoding:'cp936',
-          printerNameLabel:'打印机名'
+      const langs = {
+        'zh-CN': {
+          encoding: 'cp936',
+          printerNameLabel: '打印机名'
         },
-        'en-US':{
-          encoding:null,
-          printerNameLabel:'Printer name'
+        'en-US': {
+          encoding: null,
+          printerNameLabel: 'Printer name'
         },
       };
       childProcess.exec('%WINdir%\\System32\\cscript.exe %WINdir%\\System32\\printing_Admin_Scripts\\' + language + '\\prnmngr.vbs -l | find /i "' + langs[language].printerNameLabel + '"', {
@@ -58,13 +58,12 @@ module.exports = {
           reject(error)
         } else {
           let arr;
-          if(langs[language]){
-            if(langs[language].encoding!==null){
-              arr=iconv.decode(stdout, langs[language].encoding).toString('utf-8').split('\r\n')
+          if (langs[language]) {
+            if (langs[language].encoding !== null) {
+              arr = iconv.decode(stdout, langs[language].encoding).toString('utf-8').split('\r\n')
+            } else {
+              arr = stdout.toString('utf-8').split('\r\n')
             }
-            else{
-              arr=stdout.toString('utf-8').split('\r\n')
-            }            
           }
           stdout = arr.map(item => {
             return item.substr(langs[language].printerNameLabel.length + 1)

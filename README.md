@@ -7,22 +7,26 @@
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
-Print PDF files in Windows OS by node.js.  (supports Node, Electron. Only node.js without c++)
+Print PDF files in Windows OS by node.js. (supports Node, Electron. Only node.js without c++)
 
 If you use it in electron, check out: https://github.com/sindresorhus/electron-util#fixpathforasarunpackpath
 
 ## Usage
+
 ```
 npm i node-pdf-printer
 ```
 
 ```javascript
-import NodePdfPrinter from 'node-pdf-printer-multilang'
+import NodePdfPrinter from 'node-pdf-printer'
 import path from 'path'
 
 NodePdfPrinter.listPrinter('en-US') // Returns a promise with the array of printer names, this isn't a mandatory step
 
-const array = ['C:\\abc\\a.pdf', path.resolve('./<your project folder>/some-pdf.pdf')]
+const array = [
+  'C:\\abc\\a.pdf',
+  path.resolve('./<your project folder>/some-pdf.pdf')
+]
 
 NodePdfPrinter.printFiles(array) // Printer files to the default Windows printer.
 
@@ -45,4 +49,5 @@ Thanks [krdheeraj51](https://github.com/krdheeraj51) and [qwqVictor](https://git
 - http://www.columbia.edu/~em36/pdftoprinter.html
 
 ## Legal Infomations
+
 - [PDFtoPrinter.exe](http://www.columbia.edu/~em36/pdftoprinter.html)'s all right reserved by Edward Mendelson in Columbia University.
