@@ -4,9 +4,9 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-  printFiles(pdfFiles, printerName) {
+  printFiles (pdfFiles, printerName, execPath) {
     return new Promise((resolve, reject) => {
-      const execPath = path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
+      execPath = execPath || path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
       createFile += 'cd ' + execPath + '\n'
 
@@ -39,7 +39,7 @@ module.exports = {
       })
     })
   },
-  listPrinter(language = 'en-US') {
+  listPrinter (language = 'en-US') {
     return new Promise((resolve, reject) => {
       const langs = {
         'zh-CN': {
