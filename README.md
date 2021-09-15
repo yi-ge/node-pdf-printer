@@ -31,6 +31,8 @@ const array = [
 NodePdfPrinter.printFiles(array) // Printer files to the default Windows printer.
 
 NodePdfPrinter.printFiles(array, printerName) // Printer files to the specific printer by the printer name.
+
+NodePdfPrinter.printFiles(array, printerName, execPath) // Printer files to the specific printer by the printer name, specify the path of the executable file.
 ```
 
 ## Duplex printing
