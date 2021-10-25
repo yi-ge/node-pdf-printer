@@ -3,8 +3,8 @@ const iconv = require('iconv-lite')
 const fs = require('fs')
 const path = require('path')
 
-module.exports = {
-  printFiles (pdfFiles, printerName, execPath) {
+module.exports =
+  printFiles (pdfFiles, printerName, execPath, copies) {
     return new Promise((resolve, reject) => {
       execPath = execPath || path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
@@ -16,12 +16,18 @@ module.exports = {
         printerName = ''
       }
 
+      if (copies) {
+        copies = ' "copies=' + copies + '"'
+      } else {
+        copies = ''
+      }
+
       for (var i = 0; i < pdfFiles.length; i++) {
-        createFile += 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + '\n'
+        createFile += 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + copies +'\n'
       }
 
       createFile += 'exit /b 0 \n'
-      createFile += 'pause>nul \n'
+      createFile += 'pause>nul \n'  
 
       const batFileUrl = path.join(execPath, 'printTmp.bat')
       fs.writeFile(batFileUrl, createFile, function (err) {
