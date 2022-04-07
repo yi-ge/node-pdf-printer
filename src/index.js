@@ -8,7 +8,8 @@ module.exports = {
     return new Promise((resolve, reject) => {
       execPath = execPath || path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
-      createFile += '     chcp 65001 \n     cd ' + execPath + '\n'
+      const space = '                                                        '
+      createFile += space + 'chcp 65001 \n' + space + 'cd ' + execPath + ' \n'
 
       if (printerName) {
         printerName = ' "' + printerName + '"'
@@ -17,7 +18,7 @@ module.exports = {
       }
 
       for (var i = 0; i < pdfFiles.length; i++) {
-        createFile += '        PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + '\n'
+        createFile += space + 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + ' \n'
       }
 
       createFile += 'exit /b 0 \n'
