@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-  printFiles (pdfFiles, printerName, execPath) {
+  printFiles (pdfFiles, printerName, execPath, copies) {
     return new Promise((resolve, reject) => {
       execPath = execPath || path.join(__dirname.replace('app.asar', 'app.asar.unpacked'))
       let createFile = '@echo off \n'
@@ -17,10 +17,16 @@ module.exports = {
         printerName = ''
       }
 
-      for (var i = 0; i < pdfFiles.length; i++) {
-        createFile += space + 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + ' \n'
+      if (copies) {
+        copies = ' copies=' + copies + ''
+      } else {
+        copies = ''
       }
 
+      for (var i = 0; i < pdfFiles.length; i++) {
+        createFile += 'PDFtoPrinter.exe "' + pdfFiles[i] + '"' + printerName + copies +'\n'
+      }
+      console.log(createFile)
       createFile += 'exit /b 0 \n'
       createFile += 'pause>nul \n'
 
@@ -75,4 +81,4 @@ module.exports = {
       })
     })
   }
-}
+} 
