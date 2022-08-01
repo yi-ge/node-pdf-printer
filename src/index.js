@@ -46,6 +46,8 @@ module.exports = {
             } else {
               resolve(true)
             }
+
+            temp.cleanup()
           })
         }
       })
