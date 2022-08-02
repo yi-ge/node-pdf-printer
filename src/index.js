@@ -2,6 +2,7 @@ const childProcess = require('child_process')
 const iconv = require('iconv-lite')
 const fs = require('fs')
 const path = require('path')
+const temp = require('temp').track()
 
 module.exports = {
   printFiles (pdfFiles, printerName, execPath, copies) {
@@ -29,8 +30,12 @@ module.exports = {
       console.log(createFile)
       createFile += 'exit /b 0 \n'
       createFile += 'pause>nul \n'
+     
+      // const batFileUrl = path.join(execPath, 'printTmp.bat')
+      // Create a tempoary file for each print request with our commands in it.
+      // This prevents us from overwriting a single file during multiple subsequent print requests which can lead to duplicate prints instead of printing all requested files.
+      const batFileUrl = temp.path({dir:execPath, prefix:'printTmp', suffix: '.bat'})
 
-      const batFileUrl = path.join(execPath, 'printTmp.bat')
       fs.writeFile(batFileUrl, createFile, function (err) {
         if (err) {
           reject(err)
@@ -41,6 +46,8 @@ module.exports = {
             } else {
               resolve(true)
             }
+
+            temp.cleanup()
           })
         }
       })
